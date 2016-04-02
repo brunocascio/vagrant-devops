@@ -76,4 +76,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision :shell, path: "./provisioning/bootstrap.sh"
   config.vm.provision :shell, path: "./provisioning/lemp.sh"
   config.vm.provision :shell, path: "./provisioning/node.sh"
+  config.vm.provision :shell, path: "./provisioning/docker.sh"
 end
