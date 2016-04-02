@@ -25,4 +25,5 @@ function install_docker_compose() {
   ) &> /dev/null && ok || fail
 }
 
-install_docker && install_docker_compose
+install_docker && install_docker_compose \
+&& echo "alias dc=\"docker-compose\"" >> $HOME/.bash_aliases
