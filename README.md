@@ -9,7 +9,10 @@ Vagrant for development/operations
 
 *node.sh:* NVM (nodejs & npm installers)
 
+*docker.sh:* Docker & Docker-Compose
+
 ## TODO:
 
-Add *ruby.sh* to provisioning RoR, Sinatra and others ruby like apps.
-Add *python.sh* to provisioning Django, flask, etc.
+* Add *ruby.sh* to provisioning RoR, Sinatra and others ruby like apps.
+
+* Add *python.sh* to provisioning Django, flask, etc.
