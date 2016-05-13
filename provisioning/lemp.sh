@@ -27,7 +27,8 @@ function install_php() {
 }
 
 function install_nginx() {
-  printf "Installing NGINX: " (
+  printf "Installing NGINX: "
+  (
     sudo aptitude install -y nginx \
     && sudo rm /etc/nginx/sites-available/default \
     && sudo cp /vagrant/provisioning/nginx/default /etc/nginx/sites-available/default
