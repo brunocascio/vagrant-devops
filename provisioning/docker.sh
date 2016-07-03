@@ -6,7 +6,6 @@ function ok() {
 
 function fail() {
   echo "FAIL"
-  exit
 }
 
 function install_docker() {
@@ -14,7 +13,7 @@ function install_docker() {
   (
     wget -qO- https://get.docker.com/ | sudo bash \
       && sudo usermod -aG docker vagrant
-  ) &> /dev/null && ok || fail
+  ) > /dev/null && ok || fail
 }
 
 function install_docker_compose() {
@@ -22,8 +21,8 @@ function install_docker_compose() {
   (
     sudo apt-get -y install python-pip \
       && sudo pip install docker-compose
-  ) &> /dev/null && ok || fail
+  ) > /dev/null && ok || fail
 }
 
 install_docker && install_docker_compose \
-&& echo "alias dc=\"docker-compose\"" >> $HOME/.bash_aliases
+&& echo "alias dc=\"docker-compose\"" >> /home/vagrant/.bash_aliases

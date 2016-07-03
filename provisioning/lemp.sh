@@ -6,7 +6,6 @@ function ok() {
 
 function fail() {
   echo "FAIL"
-  exit
 }
 
 function install_mysql() {
@@ -14,7 +13,10 @@ function install_mysql() {
   sudo echo "mysql-server mysql-server/root_password password " | sudo debconf-set-selections
   sudo echo "mysql-server mysql-server/root_password_again password " | sudo debconf-set-selections
 
-  printf "Installing Mysql: " && (sudo apt install -q -y -f mysql-server mysql-client) &> /dev/null && ok || fail
+  printf "Installing Mysql: "
+  (
+    sudo apt install -q -y -f mysql-server-5.6 mysql-client-5.6
+  ) > /dev/null && ok || fail
 }
 
 function install_php() {
@@ -23,7 +25,7 @@ function install_php() {
     sudo add-apt-repository ppa:ondrej/php5-5.6 -y
     sudo apt update -y
     sudo apt install -y php5 php5-fpm php5-mysql php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-sqlite php5-tidy php5-xcache
-  ) &> /dev/null && ok || fail
+  ) > /dev/null && ok || fail
 }
 
 function install_nginx() {
@@ -32,7 +34,7 @@ function install_nginx() {
     sudo aptitude install -y nginx \
     && sudo rm /etc/nginx/sites-available/default \
     && sudo cp /vagrant/provisioning/nginx/default /etc/nginx/sites-available/default
-  ) &> /dev/null && ok || fail
+  ) > /dev/null && ok || fail
 }
 
 install_mysql \
